@@ -1,18 +1,17 @@
 from __future__ import annotations
-from typing_extensions import Self
-from nextcord.ext import commands
-from typing import TYPE_CHECKING
+
+from typing import TYPE_CHECKING, no_type_check
+
 import requests
-
 from aiohttp import ClientSession, ContentTypeError
-
-from utils import rev, _decode_with_orjson, PatchedSlashOption
-from nextcord import slash_command, Interaction, Embed, Colour, ButtonStyle, SlashOption
-from nextcord.ui import button, View, Button
-
-from requests.exceptions import JSONDecodeError
+from nextcord import (ButtonStyle, Colour, Embed, Interaction, SlashOption,
+                      slash_command)
+from nextcord.ext import commands
+from nextcord.ui import Button, View, button
 from orjson import JSONDecodeError as _ORJSON_DECODEERROR
-from typing import no_type_check
+from requests.exceptions import JSONDecodeError
+from typing_extensions import Self
+from utils import PatchedSlashOption, _decode_with_orjson, rev
 
 if TYPE_CHECKING:
     from ..__main__ import MainBot

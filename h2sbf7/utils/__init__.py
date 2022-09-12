@@ -1,6 +1,5 @@
-from orjson import loads
-
 from aiohttp import ClientSession
+from orjson import loads
 
 
 def rev(iter):

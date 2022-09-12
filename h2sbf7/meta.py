@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
-from nextcord import slash_command, Interaction
+
+from nextcord import Interaction, slash_command
 from nextcord.ext import commands
 
 if TYPE_CHECKING:

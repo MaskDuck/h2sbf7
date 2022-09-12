@@ -1,12 +1,12 @@
 from __future__ import annotations
-from nextcord.ext import commands
-import uvloop
-import aiohttp
-from nextcord import Intents
 
 import os
 
+import aiohttp
+import uvloop
 from dotenv import load_dotenv
+from nextcord import Intents
+from nextcord.ext import commands
 
 load_dotenv()
 import asyncio
@@ -15,7 +15,7 @@ asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 intents = Intents.all()
 intents.typing = False
 intents.invites = False
-from logging import getLogger, StreamHandler
+from logging import StreamHandler, getLogger
 
 _log = getLogger("nextcord")
 _log.setLevel(1)
