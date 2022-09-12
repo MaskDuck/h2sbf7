@@ -27,6 +27,7 @@ class XKCDIterator:
             r = requests.get(f"https://xkcd.com/{self.count}/info.0.json")
             return r.json()
         except JSONDecodeError:
+            self.count = self.count - 1
             return None
 
     def __rev__(self: Self) -> dict:
@@ -37,6 +38,7 @@ class XKCDIterator:
             return r
 
         except JSONDecodeError:
+            self.count += 1
             return None
 
 
@@ -55,7 +57,7 @@ class XKCDButton(View):
         raw_xkcd = rev(self._xkcd_iterator)
         if raw_xkcd is None:
             await interaction.send(
-                f"It seems like the XKCD comic numbered {self._xkcd_iterator.count} doesn't exist.",
+                f"It seems like the XKCD comic numbered {self._xkcd_iterator.count - 1} doesn't exist.",
                 ephemeral=True,
             )
             return
@@ -79,7 +81,7 @@ class XKCDButton(View):
         raw_xkcd = next(self._xkcd_iterator)
         if raw_xkcd is None:
             await interaction.send(
-                f"It seems like the XKCD comic numbered {self._xkcd_iterator.count} doesn't exist.",
+                f"It seems like the XKCD comic numbered {self._xkcd_iterator.count + 1} doesn't exist.",
                 ephemeral=True,
             )
             return
